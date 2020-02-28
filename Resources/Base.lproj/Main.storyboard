@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9d8-Ca-uxN">
+    <device id="retina4_0" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Car Records View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="CarRecordsViewController" customModule="CarDirectory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Rrw-bd-w0Y">
+                                <rect key="frame" x="0.0" y="44" width="320" height="524"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="CarCell" rowHeight="76" id="Fuf-pH-Mpo" customClass="CarCell" customModule="CarDirectory" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="76"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Fuf-pH-Mpo" id="mHB-aY-rgL">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="76"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Volkswagen" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mi7-0H-xmn">
+                                                    <rect key="frame" x="20" y="10" width="108" height="24"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="medium" pointSize="20"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="2013" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gk1-ED-N4I">
+                                                    <rect key="frame" x="256" y="10" width="44" height="19.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="44" id="ip2-qT-yDg"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Offroad" textAlignment="natural" lineBreakMode="clip" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kzD-KO-CQg">
+                                                    <rect key="frame" x="20" y="46.5" width="55" height="19.5"/>
+                                                    <fontDescription key="fontDescription" type="system" weight="light" pointSize="16"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Gk1-ED-N4I" secondAttribute="trailing" constant="20" id="4OP-xZ-68W"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="kzD-KO-CQg" secondAttribute="trailing" constant="20" id="7p8-an-OT9"/>
+                                                <constraint firstItem="Gk1-ED-N4I" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="mi7-0H-xmn" secondAttribute="trailing" constant="12" id="GL4-2M-Tso"/>
+                                                <constraint firstItem="Gk1-ED-N4I" firstAttribute="top" secondItem="mHB-aY-rgL" secondAttribute="top" constant="10" id="OBb-CW-nqu"/>
+                                                <constraint firstItem="kzD-KO-CQg" firstAttribute="leading" secondItem="mHB-aY-rgL" secondAttribute="leading" constant="20" id="OyY-IL-35m"/>
+                                                <constraint firstAttribute="bottom" secondItem="kzD-KO-CQg" secondAttribute="bottom" constant="10" id="U8W-5Y-o3j"/>
+                                                <constraint firstItem="mi7-0H-xmn" firstAttribute="leading" secondItem="mHB-aY-rgL" secondAttribute="leading" constant="20" id="Weq-XG-knR"/>
+                                                <constraint firstItem="mi7-0H-xmn" firstAttribute="top" secondItem="mHB-aY-rgL" secondAttribute="top" constant="10" id="vWO-eY-Zqx"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="bodyTypeLabel" destination="kzD-KO-CQg" id="U6c-wo-GJH"/>
+                                            <outlet property="carNameLabel" destination="mi7-0H-xmn" id="Ckt-qo-h3p"/>
+                                            <outlet property="releaseYearLabel" destination="Gk1-ED-N4I" id="6M4-WL-4Nf"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="Rrw-bd-w0Y" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="8b2-7l-6Ns"/>
+                            <constraint firstItem="Rrw-bd-w0Y" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="Xyg-Jy-PhB"/>
+                            <constraint firstItem="Rrw-bd-w0Y" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="ksM-va-EgM"/>
+                            <constraint firstItem="Rrw-bd-w0Y" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="tUC-54-qbO"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="syB-5f-nyV"/>
+                    <connections>
+                        <outlet property="carTableView" destination="Rrw-bd-w0Y" id="UMY-RL-V5F"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="408.69565217391306" y="6.5217391304347831"/>
+        </scene>
+        <!--Car Info View Controller-->
+        <scene sceneID="D20-gg-xCl">
+            <objects>
+                <viewController storyboardIdentifier="CarInfo" id="awg-QM-lNW" customClass="CarInfoViewController" customModule="CarDirectory" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="giz-Fr-9ej">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="VAx-2Y-u1l">
+                                <rect key="frame" x="20" y="20" width="280" height="126"/>
+                                <subviews>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Manufacturer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GOa-Pg-UTs">
+                                        <rect key="frame" x="0.0" y="0.0" width="280" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Model" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rkj-JA-QlF">
+                                        <rect key="frame" x="0.0" y="46" width="280" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Release year" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HUe-Me-rEa">
+                                        <rect key="frame" x="0.0" y="92" width="280" height="34"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" keyboardType="numberPad"/>
+                                    </textField>
+                                </subviews>
+                            </stackView>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O83-gi-6kv">
+                                <rect key="frame" x="0.0" y="166" width="320" height="216"/>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="VAx-2Y-u1l" firstAttribute="top" secondItem="L3v-hR-vBp" secondAttribute="top" constant="20" id="Dh7-mY-j7Q"/>
+                            <constraint firstItem="O83-gi-6kv" firstAttribute="leading" secondItem="giz-Fr-9ej" secondAttribute="leading" id="KPq-kD-ylS"/>
+                            <constraint firstItem="L3v-hR-vBp" firstAttribute="trailing" secondItem="VAx-2Y-u1l" secondAttribute="trailing" constant="20" id="QIZ-jo-gB5"/>
+                            <constraint firstItem="L3v-hR-vBp" firstAttribute="trailing" secondItem="O83-gi-6kv" secondAttribute="trailing" id="WUu-Gx-utw"/>
+                            <constraint firstItem="VAx-2Y-u1l" firstAttribute="leading" secondItem="L3v-hR-vBp" secondAttribute="leading" constant="20" id="uCL-Tn-7Uf"/>
+                            <constraint firstItem="O83-gi-6kv" firstAttribute="top" secondItem="VAx-2Y-u1l" secondAttribute="bottom" constant="20" id="wme-45-83J"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="L3v-hR-vBp"/>
+                    </view>
+                    <connections>
+                        <outlet property="bodyTypePickerView" destination="O83-gi-6kv" id="Ve7-4u-62J"/>
+                        <outlet property="manufacturerTextField" destination="GOa-Pg-UTs" id="2BA-00-hfP"/>
+                        <outlet property="modelTextField" destination="rkj-JA-QlF" id="JCW-DK-hfp"/>
+                        <outlet property="releaseYearTextField" destination="HUe-Me-rEa" id="KN9-I4-QB8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6xY-jW-9Ia" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1301.25" y="5.28169014084507"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="vBF-Wk-quZ">
+            <objects>
+                <navigationController id="9d8-Ca-uxN" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="0A2-0J-zlz">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="IYM-oH-KZz"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KMv-1B-jiv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-367" y="8"/>
+        </scene>
+    </scenes>
+</document>
