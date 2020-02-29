@@ -19,6 +19,10 @@ class CarDetailsViewController: UIViewController {
     
     var carReleaseYear: [String] = []
     
+    enum PickerViewComponent: Int, CaseIterable {
+        case bodyType = 0, year
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,7 +33,7 @@ class CarDetailsViewController: UIViewController {
     }
     
     private func configureYears() {
-        for year in 1990...2020 {
+        for year in stride(from: 2020, to: 1900, by: -1) {
             carReleaseYear.append(String(year))
         }
     }
@@ -46,10 +50,12 @@ class CarDetailsViewController: UIViewController {
         
         guard
             let carRecord = carRecord,
-            let row = CarBodyType.allCases.firstIndex(of: carRecord.bodyType)
-            else { return }
+            let bodyRow = CarBodyType.allCases.firstIndex(of: carRecord.bodyType),
+            let yearRow = carReleaseYear.firstIndex(of: String(carRecord.releaseYear))
+        else { return }
         
-        bodyTypePickerView.selectRow(row, inComponent: 0, animated: false)
+        bodyTypePickerView.selectRow(bodyRow, inComponent: 0, animated: false)
+        bodyTypePickerView.selectRow(yearRow, inComponent: 1, animated: false)
     }
     
     private func configureNavigationBarButtons() {
@@ -101,25 +107,25 @@ extension CarDetailsViewController: UIPickerViewDataSource, UIPickerViewDelegate
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        switch component {
-        case 0:
+        let pickerViewComponent = PickerViewComponent.allCases[component]
+        
+        switch pickerViewComponent {
+        case .bodyType:
             return CarBodyType.allCases.count
-        case 1:
+        case .year:
             return carReleaseYear.count
-        default:
-            return 0
         }
     }
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        switch component {
-        case 0:
+        let pickerViewComponent = PickerViewComponent.allCases[component]
+        
+        switch pickerViewComponent {
+        case .bodyType:
             return CarBodyType.allCases[row].rawValue
-        case 1:
+        case .year:
             return carReleaseYear[row]
-        default:
-            return ""
         }
     }
 }
