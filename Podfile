@@ -5,7 +5,6 @@ target 'CarDirectory' do
   # Comment the next line if you don't want to use dynamic frameworks
   use_frameworks!
 
-  # Pods for CarDirectory
-  pod 'RealmSwift'
-
+ pod 'RealmSwift' 
+# Pods for CarDirectory
 end

@@ -24,19 +24,14 @@ final class DataBase {
     }
     
     func addCarRecord(_ carRecord: CarRecord) {
-        #warning("TODO")
+        try! realm.write {
+            realm.add(carRecord)
+        }
     }
     
-    func updateCarRecord(_ carRecord: CarRecord,
-                         manufacturerName: String,
-                         modelName: String,
-                         releaseYear: String,
-                         carcassType: CarBodyType) {
+    func updateCarRecord(_ carRecord: CarRecord) {
         try! realm.write {
-            carRecord.manufacturer = manufacturerName
-            carRecord.model = modelName
-            carRecord.releaseYear = Int(releaseYear)!
-            carRecord.bodyType = carcassType
+            realm.add(carRecord, update: .all)
         }
     }
     
@@ -55,9 +50,9 @@ final class DataBase {
         
         try! realm.write {
             realm.add([
-                CarRecord(id: 1, manufacturer: "Hyundai", model: "Creta", releaseYear: 2018, bodyType: .offroad),
-                CarRecord(id: 2, manufacturer: "Toyota", model: "Corolla", releaseYear: 1996, bodyType: .sedan),
-                CarRecord(id: 3, manufacturer: "Ford", model: "Focus", releaseYear: 2006, bodyType: .hatchback)
+                CarRecord(manufacturer: "Hyundai", model: "Creta", releaseYear: 2018, bodyType: .offroad),
+                CarRecord(manufacturer: "Toyota", model: "Corolla", releaseYear: 1996, bodyType: .sedan),
+                CarRecord(manufacturer: "Ford", model: "Mondeo", releaseYear: 2006, bodyType: .hatchback)
             ])
         }
         
@@ -66,9 +61,5 @@ final class DataBase {
     
     private func runMigrations(_ migration: Migration, oldSchemaVersion: UInt64) {
         
-    }
-    
-    func createUnmanagedObject(value: Any) -> Object {
-        return Object(value: value)
     }
 }

@@ -28,7 +28,7 @@ class CarRecordsViewController: UIViewController {
     }
     
     override func viewWillAppear(_ animated: Bool) {
-        carTableView.reloadData()
+        fetchData()
     }
     
     private func configureNavigationBarButtons() {
@@ -37,7 +37,7 @@ class CarRecordsViewController: UIViewController {
     
     @objc private func onAddButtonTap() {
         guard
-            let carInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CarInfo") as? CarInfoViewController
+            let carInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CarInfo") as? CarDetailsViewController
             else { return }
         self.navigationController?.pushViewController(carInfoVC, animated: true)
     }
@@ -54,10 +54,10 @@ extension CarRecordsViewController: UITableViewDelegate, UITableViewDataSource {
         tableView.deselectRow(at: indexPath, animated: true)
         
         guard
-            let carInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CarInfo") as? CarInfoViewController
+            let carInfoVC = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "CarInfo") as? CarDetailsViewController
             else { return }
         
-        carInfoVC.carRecord = carRecords[indexPath.row]
+        carInfoVC.carRecord = carRecords[indexPath.row].copy()
         
         self.navigationController?.pushViewController(carInfoVC, animated: true)
     }
@@ -94,5 +94,4 @@ extension CarRecordsViewController: UITableViewDelegate, UITableViewDataSource {
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
     }
-    
 }

@@ -10,7 +10,7 @@ import Foundation
 import RealmSwift
 
 class CarRecord: Object {
-    @objc dynamic var id: Int
+    @objc dynamic var id = UUID().uuidString
     @objc dynamic var manufacturer: String
     @objc dynamic var model: String
     @objc dynamic var releaseYear: Int
@@ -25,8 +25,8 @@ class CarRecord: Object {
         }
     }
     
-    init(id: Int,
-         manufacturer: String,
+    init(id: String = UUID().uuidString,
+        manufacturer: String,
          model: String,
          releaseYear: Int,
          bodyType: CarBodyType) {
@@ -38,15 +38,24 @@ class CarRecord: Object {
     }
     
     required init() {
-        id = 0
         manufacturer = ""
         model = ""
         releaseYear = 0
         bodyTypeRaw = ""
     }
     
-    override class func primaryKey() -> String? {
-        return "id"
+    override static func primaryKey() -> String? {
+      return "id"
+    }
+    
+    func copy() -> CarRecord {
+        return CarRecord(
+            id: self.id,
+            manufacturer: self.manufacturer,
+            model: self.model,
+            releaseYear: self.releaseYear,
+            bodyType: self.bodyType
+        )
     }
 }
 
