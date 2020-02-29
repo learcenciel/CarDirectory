@@ -13,7 +13,7 @@ class CarDetailsViewController: UIViewController {
     
     @IBOutlet weak var manufacturerTextField: UITextField!
     @IBOutlet weak var modelTextField: UITextField!
-    @IBOutlet weak var bodyTypePickerView: UIPickerView!
+    @IBOutlet weak var bodyTypeYearPickerView: UIPickerView!
     
     var carRecord: CarRecord?
     
@@ -45,8 +45,8 @@ class CarDetailsViewController: UIViewController {
     }
     
     private func configurePickerView() {
-        bodyTypePickerView.dataSource = self
-        bodyTypePickerView.delegate = self
+        bodyTypeYearPickerView.dataSource = self
+        bodyTypeYearPickerView.delegate = self
         
         guard
             let carRecord = carRecord,
@@ -54,8 +54,8 @@ class CarDetailsViewController: UIViewController {
             let yearRow = carReleaseYear.firstIndex(of: String(carRecord.releaseYear))
         else { return }
         
-        bodyTypePickerView.selectRow(bodyRow, inComponent: 0, animated: false)
-        bodyTypePickerView.selectRow(yearRow, inComponent: 1, animated: false)
+        bodyTypeYearPickerView.selectRow(bodyRow, inComponent: 0, animated: false)
+        bodyTypeYearPickerView.selectRow(yearRow, inComponent: 1, animated: false)
     }
     
     private func configureNavigationBarButtons() {
@@ -66,6 +66,7 @@ class CarDetailsViewController: UIViewController {
         }
     }
     
+    // MARK: returns detached realm object
     func createDedatchedCarRecord() -> CarRecord? {
         
         let detachedCarRecord = self.carRecord ?? CarRecord()
@@ -75,11 +76,11 @@ class CarDetailsViewController: UIViewController {
             let model = modelTextField.text
             else { return nil }
         
-        let carcassType = CarBodyType.allCases[bodyTypePickerView.selectedRow(inComponent: 0)]
+        let carcassType = CarBodyType.allCases[bodyTypeYearPickerView.selectedRow(inComponent: 0)]
         
         detachedCarRecord.manufacturer = manufacturer
         detachedCarRecord.model = model
-        detachedCarRecord.releaseYear = Int(carReleaseYear[bodyTypePickerView.selectedRow(inComponent: 1)])!
+        detachedCarRecord.releaseYear = Int(carReleaseYear[bodyTypeYearPickerView.selectedRow(inComponent: 1)])!
         detachedCarRecord.bodyType = carcassType
         
         return detachedCarRecord
@@ -107,9 +108,9 @@ extension CarDetailsViewController: UIPickerViewDataSource, UIPickerViewDelegate
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         
-        let pickerViewComponent = PickerViewComponent.allCases[component]
+        let pickerViewComponentRows = PickerViewComponent.allCases[component]
         
-        switch pickerViewComponent {
+        switch pickerViewComponentRows {
         case .bodyType:
             return CarBodyType.allCases.count
         case .year:
@@ -119,9 +120,9 @@ extension CarDetailsViewController: UIPickerViewDataSource, UIPickerViewDelegate
     
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         
-        let pickerViewComponent = PickerViewComponent.allCases[component]
+        let pickerViewComponentTitle = PickerViewComponent.allCases[component]
         
-        switch pickerViewComponent {
+        switch pickerViewComponentTitle {
         case .bodyType:
             return CarBodyType.allCases[row].rawValue
         case .year:

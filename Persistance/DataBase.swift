@@ -15,7 +15,7 @@ final class DataBase {
     private let isDataBasePrefilledKey = "isDataBasePrefilled"
     private let schemaVersion: UInt64 = 1
     
-    // MARK: realm configuration with migration support only
+    // MARK: realm configuration with migration support
     private lazy var realmConfiguration = Realm.Configuration(schemaVersion: schemaVersion, migrationBlock: runMigrations)
     private lazy var realm = try! Realm(configuration: realmConfiguration)
     
@@ -45,6 +45,7 @@ final class DataBase {
         prefillDataBaseIfNeeded()
     }
     
+    // MARK: first app launch data prefill
     private func prefillDataBaseIfNeeded() {
         guard UserDefaults.standard.bool(forKey: isDataBasePrefilledKey) == false else { return }
         

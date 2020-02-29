@@ -42,6 +42,7 @@ class CarRecordsViewController: UIViewController {
         self.navigationController?.pushViewController(carInfoVC, animated: true)
     }
     
+    // MARK: fetch records from database
     func fetchData() {
         carRecords = DataBase.shared.fetchCarRecords()
         carTableView.reloadData()
@@ -83,6 +84,7 @@ extension CarRecordsViewController: UITableViewDelegate, UITableViewDataSource {
         return 76.0
     }
     
+    // MARK: trailing swipe delete animation
     func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         
         let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [unowned self] _, _, completion in
