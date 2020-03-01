@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		206CF8EA2409903F004F7CCB /* Pods_CarDirectory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31DB176C761FEAEAF288C6BB /* Pods_CarDirectory.framework */; };
 		206CF8EB2409903F004F7CCB /* Pods_CarDirectory.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31DB176C761FEAEAF288C6BB /* Pods_CarDirectory.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		206D4357240BEA6900B343A4 /* UITextField + Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D4356240BEA6900B343A4 /* UITextField + Validation.swift */; };
 		2090128C24080279003B0F89 /* CarRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2090128B24080279003B0F89 /* CarRecord.swift */; };
 		2090128E24080381003B0F89 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2090128D24080381003B0F89 /* DataBase.swift */; };
 		20BFA63B24098F5B0010C340 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -37,6 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		206D4356240BEA6900B343A4 /* UITextField + Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Validation.swift"; sourceTree = "<group>"; };
 		2090128B24080279003B0F89 /* CarRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRecord.swift; sourceTree = "<group>"; };
 		2090128D24080381003B0F89 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		20BFA62724098E950010C340 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -99,6 +101,7 @@
 			children = (
 				20F635E32407C526002278F3 /* CarRecordsViewController.swift */,
 				20D926E02407EAB6009DDA21 /* CarDetailsViewController.swift */,
+				206D4356240BEA6900B343A4 /* UITextField + Validation.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -289,6 +292,7 @@
 				2090128E24080381003B0F89 /* DataBase.swift in Sources */,
 				20F635E42407C526002278F3 /* CarRecordsViewController.swift in Sources */,
 				20F635E02407C526002278F3 /* AppDelegate.swift in Sources */,
+				206D4357240BEA6900B343A4 /* UITextField + Validation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
