@@ -22,6 +22,7 @@ class CarRecordsViewController: UIViewController {
         fetchData()
     }
     
+    // MARK: Configure block
     private func configureTableView() {
         carTableView.delegate = self
         carTableView.dataSource = self
@@ -49,6 +50,7 @@ class CarRecordsViewController: UIViewController {
     }
 }
 
+// MARK: UITableViewDelegate, UITableViewDataSource
 extension CarRecordsViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -68,7 +70,6 @@ extension CarRecordsViewController: UITableViewDelegate, UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
         let carRecord = carRecords[indexPath.row]
         
         guard

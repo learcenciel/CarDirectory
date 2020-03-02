@@ -97,12 +97,12 @@
                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="VAx-2Y-u1l">
                                 <rect key="frame" x="20" y="64" width="374" height="80"/>
                                 <subviews>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Manufacturer" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="GOa-Pg-UTs">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Manufacturer" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="GOa-Pg-UTs">
                                         <rect key="frame" x="0.0" y="0.0" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Model" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="rkj-JA-QlF">
+                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Model" textAlignment="natural" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="rkj-JA-QlF">
                                         <rect key="frame" x="0.0" y="46" width="374" height="34"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                         <textInputTraits key="textInputTraits"/>
@@ -125,7 +125,7 @@
                         <viewLayoutGuide key="safeArea" id="L3v-hR-vBp"/>
                     </view>
                     <connections>
-                        <outlet property="bodyTypePickerView" destination="O83-gi-6kv" id="Ve7-4u-62J"/>
+                        <outlet property="bodyTypeYearPickerView" destination="O83-gi-6kv" id="IyE-rV-xyD"/>
                         <outlet property="manufacturerTextField" destination="GOa-Pg-UTs" id="2BA-00-hfP"/>
                         <outlet property="modelTextField" destination="rkj-JA-QlF" id="JCW-DK-hfp"/>
                     </connections>

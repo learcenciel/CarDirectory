@@ -9,6 +9,8 @@
 import Foundation
 import UIKit
 
+// MARK: UITextField validaiton
+
 protocol ValidatorConvertible {
     func validate(_ value: String?) throws -> String
 }
@@ -37,8 +39,8 @@ struct ValidationError: Error {
 
 class ManufacturerValidator: ValidatorConvertible {
     func validate(_ value: String?) throws -> String {
-        if let value = value, !value.isEmpty {
-            return value
+        if let trimmedValue = value?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedValue.isEmpty == false {
+            return trimmedValue
         }
         
         throw ValidationError("Manufacturer field is empty")
@@ -47,22 +49,11 @@ class ManufacturerValidator: ValidatorConvertible {
 
 class ModelValidator: ValidatorConvertible {
     func validate(_ value: String?) throws -> String {
-        if let value = value, !value.isEmpty {
-            return value
+        if let trimmedValue = value?.trimmingCharacters(in: .whitespacesAndNewlines), trimmedValue.isEmpty == false {
+            return trimmedValue
         }
         
         throw ValidationError("Model field is empty")
-    }
-}
-
-extension UIViewController {
-    func showAlert(_ error: String) {
-        let alertController = UIAlertController(title: "All the fields are required.", message: error, preferredStyle: .alert)
-        let alertAction = UIAlertAction(title: "Ok", style: .cancel, handler: nil)
-        
-        alertController.addAction(alertAction)
-        
-        self.present(alertController, animated: true, completion: nil)
     }
 }
 

@@ -17,7 +17,7 @@ class CarDetailsViewController: UIViewController {
     
     var carRecord: CarRecord?
     
-    var carReleaseYear: [String] = []
+    var carReleaseYear: [Int] = []
     
     enum PickerViewComponent: Int, CaseIterable {
         case bodyType = 0, year
@@ -32,10 +32,10 @@ class CarDetailsViewController: UIViewController {
         configureNavigationBarButtons()
     }
     
+    // MARK: Configure block
     private func configureYears() {
-        for year in stride(from: 2020, to: 1900, by: -1) {
-            carReleaseYear.append(String(year))
-        }
+        let currentYear = Calendar.current.component(.year, from: Date())
+        carReleaseYear = Array(1900...currentYear).reversed()
     }
     
     private func configureTextFields() {
@@ -51,8 +51,8 @@ class CarDetailsViewController: UIViewController {
         guard
             let carRecord = carRecord,
             let bodyRow = CarBodyType.allCases.firstIndex(of: carRecord.bodyType),
-            let yearRow = carReleaseYear.firstIndex(of: String(carRecord.releaseYear))
-        else { return }
+            let yearRow = carReleaseYear.firstIndex(of: carRecord.releaseYear)
+            else { return }
         
         bodyTypeYearPickerView.selectRow(bodyRow, inComponent: 0, animated: false)
         bodyTypeYearPickerView.selectRow(yearRow, inComponent: 1, animated: false)
@@ -66,40 +66,42 @@ class CarDetailsViewController: UIViewController {
         }
     }
     
-    // MARK: returns detached realm object
-    func createDedatchedCarRecord() -> CarRecord? {
-        
-        let detachedCarRecord = self.carRecord ?? CarRecord()
-        
-        guard
-            let manufacturer = manufacturerTextField.text,
-            let model = modelTextField.text
-            else { return nil }
+    private func buildAndValidateCarRecord() -> CarRecord? {
+        let carRecord = self.carRecord ?? CarRecord()
         
         let carcassType = CarBodyType.allCases[bodyTypeYearPickerView.selectedRow(inComponent: 0)]
         
-        detachedCarRecord.manufacturer = manufacturer
-        detachedCarRecord.model = model
-        detachedCarRecord.releaseYear = Int(carReleaseYear[bodyTypeYearPickerView.selectedRow(inComponent: 1)])!
-        detachedCarRecord.bodyType = carcassType
+        carRecord.releaseYear = carReleaseYear[bodyTypeYearPickerView.selectedRow(inComponent: 1)]
+        carRecord.bodyType = carcassType
         
-        return detachedCarRecord
+        do {
+            carRecord.manufacturer = try manufacturerTextField.validatedText(validationType: .manufacturer)
+            carRecord.model = try modelTextField.validatedText(validationType: .model)
+            
+            return carRecord
+        } catch(let error) {
+            showAlert("All the fields are required.", message: (error as! ValidationError).message)
+        }
+        
+        return nil
     }
     
     @objc private func onAddButtonTap() {
-        let detachedCarRecordToAdd = createDedatchedCarRecord()
+        guard let validatedCarRecord = buildAndValidateCarRecord() else { return }
         
-        DataBase.shared.addCarRecord(detachedCarRecordToAdd!)
+        DataBase.shared.addCarRecord(validatedCarRecord)
+        self.navigationController?.popViewController(animated: true)
     }
     
     @objc private func onSaveButtonTap() {
+        guard let validatedCarRecord = buildAndValidateCarRecord() else { return }
         
-        let detachedCarRecordToUpdate = createDedatchedCarRecord()
-        
-        DataBase.shared.updateCarRecord(detachedCarRecordToUpdate!)
+        DataBase.shared.updateCarRecord(validatedCarRecord)
+        self.navigationController?.popViewController(animated: true)
     }
 }
 
+// MARK: UIPickerViewDataSource, UIPickerViewDelegate
 extension CarDetailsViewController: UIPickerViewDataSource, UIPickerViewDelegate {
     
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
@@ -107,7 +109,6 @@ extension CarDetailsViewController: UIPickerViewDataSource, UIPickerViewDelegate
     }
     
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        
         let pickerViewComponentRows = PickerViewComponent.allCases[component]
         
         switch pickerViewComponentRows {
@@ -126,7 +127,7 @@ extension CarDetailsViewController: UIPickerViewDataSource, UIPickerViewDelegate
         case .bodyType:
             return CarBodyType.allCases[row].rawValue
         case .year:
-            return carReleaseYear[row]
+            return String(carReleaseYear[row])
         }
     }
 }

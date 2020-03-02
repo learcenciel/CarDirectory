@@ -60,6 +60,7 @@ final class DataBase {
         UserDefaults.standard.set(true, forKey: isDataBasePrefilledKey)
     }
     
+    // MARK: setup migration actions here
     private func runMigrations(_ migration: Migration, oldSchemaVersion: UInt64) {
         
     }

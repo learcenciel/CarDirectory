@@ -10,6 +10,7 @@
 		206CF8EA2409903F004F7CCB /* Pods_CarDirectory.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 31DB176C761FEAEAF288C6BB /* Pods_CarDirectory.framework */; };
 		206CF8EB2409903F004F7CCB /* Pods_CarDirectory.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 31DB176C761FEAEAF288C6BB /* Pods_CarDirectory.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		206D4357240BEA6900B343A4 /* UITextField + Validation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 206D4356240BEA6900B343A4 /* UITextField + Validation.swift */; };
+		20801115240D5E6D00BCD4E4 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20801114240D5E6D00BCD4E4 /* UIViewControllerExtensions.swift */; };
 		2090128C24080279003B0F89 /* CarRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2090128B24080279003B0F89 /* CarRecord.swift */; };
 		2090128E24080381003B0F89 /* DataBase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2090128D24080381003B0F89 /* DataBase.swift */; };
 		20BFA63B24098F5B0010C340 /* (null) in Embed Frameworks */ = {isa = PBXBuildFile; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -39,6 +40,7 @@
 
 /* Begin PBXFileReference section */
 		206D4356240BEA6900B343A4 /* UITextField + Validation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UITextField + Validation.swift"; sourceTree = "<group>"; };
+		20801114240D5E6D00BCD4E4 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
 		2090128B24080279003B0F89 /* CarRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CarRecord.swift; sourceTree = "<group>"; };
 		2090128D24080381003B0F89 /* DataBase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataBase.swift; sourceTree = "<group>"; };
 		20BFA62724098E950010C340 /* Realm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Realm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -72,6 +74,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		20801113240D5E5500BCD4E4 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				206D4356240BEA6900B343A4 /* UITextField + Validation.swift */,
+				20801114240D5E6D00BCD4E4 /* UIViewControllerExtensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		20901291240813E8003B0F89 /* View */ = {
 			isa = PBXGroup;
 			children = (
@@ -101,7 +112,6 @@
 			children = (
 				20F635E32407C526002278F3 /* CarRecordsViewController.swift */,
 				20D926E02407EAB6009DDA21 /* CarDetailsViewController.swift */,
-				206D4356240BEA6900B343A4 /* UITextField + Validation.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -119,6 +129,7 @@
 		20F635D32407C526002278F3 = {
 			isa = PBXGroup;
 			children = (
+				20801113240D5E5500BCD4E4 /* Extensions */,
 				20F635DE2407C526002278F3 /* CarDirectory */,
 				209012942408141D003B0F89 /* Controller */,
 				20901292240813F5003B0F89 /* Model */,
@@ -286,6 +297,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20801115240D5E6D00BCD4E4 /* UIViewControllerExtensions.swift in Sources */,
 				20F635F92407D319002278F3 /* CarCell.swift in Sources */,
 				20D926E12407EAB6009DDA21 /* CarDetailsViewController.swift in Sources */,
 				2090128C24080279003B0F89 /* CarRecord.swift in Sources */,
