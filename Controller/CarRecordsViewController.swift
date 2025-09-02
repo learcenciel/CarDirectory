@@ -34,6 +34,7 @@ class CarRecordsViewController: UIViewController {
     
     private func configureNavigationBarButtons() {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(onAddButtonTap))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Tab Demo", style: .plain, target: self, action: #selector(onTabDemoButtonTap))
     }
     
     @objc private func onAddButtonTap() {
@@ -96,5 +97,11 @@ extension CarRecordsViewController: UITableViewDelegate, UITableViewDataSource {
         }
         
         return UISwipeActionsConfiguration(actions: [deleteAction])
+    }
+    
+    @objc private func onTabDemoButtonTap() {
+        let tabSelectionVC = TabSelectionViewController()
+        let navController = UINavigationController(rootViewController: tabSelectionVC)
+        present(navController, animated: true)
     }
 }
